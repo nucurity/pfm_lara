@@ -15,12 +15,39 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('firstName');
+            $table->string('lastName');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('categoryId');
+            $table->string('categoryName');
+        });
+
+        Schema::create('debits', function (Blueprint $table) {
+            $table->increments('debitId');
+            $table->integer('debitUserId')->unsigned()->default(0);
+            $table->string('debitName');
+            $table->integer('debitCategoryId')->unsigned()->default(0);
+            $table->integer('debitAmount');
+            $table->timestamps();
+            $table->foreign('debitUserId')->references('id')->on('users');
+            $table->foreign('debitCategoryId')->references('categoryId')->on('categories');
+        });
+
+        Schema::create('credits', function (Blueprint $table) {
+            $table->increments('creditId');
+            $table->integer('creditUserId')->unsigned()->default(0);
+            $table->string('creditName');
+            $table->integer('creditCategoryId')->unsigned()->default(0);
+            $table->integer('creditAmount');
+            $table->timestamps();
+            $table->foreign('creditUserId')->references('id')->on('users');
+            $table->foreign('creditCategoryId')->references('categoryId')->on('categories');
         });
     }
 

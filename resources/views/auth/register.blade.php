@@ -16,30 +16,30 @@
                 <form name="signupForm" id="signupForm" novalidate style="margin-top:20px" method="post"
                       action="{{ url('/register') }}">
                     {{ csrf_field() }}
-                    <div class="form-group{{ $errors->has('fname') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                         <div class="controls">
                             <label>
                                 First Name:
                             </label>
-                            <input id="fname" type="text" class="form-control" name="fname" value="{{ old('fname') }}"
+                            <input id="fname" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}"
                                    required autofocus>
-                            @if ($errors->has('fname'))
+                            @if ($errors->has('firstName'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('fname') }}</strong>
+                                        <strong>{{ $errors->first('firstName') }}</strong>
                                     </span>
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('lname') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                         <div class="controls">
                             <label>
                                 Last Name:
                             </label>
-                            <input id="lname" type="text" class="form-control" name="lname" value="{{ old('lname') }}"
+                            <input id="lname" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}"
                                    required autofocus>
-                            @if ($errors->has('lname'))
+                            @if ($errors->has('lastName'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('lname') }}</strong>
+                                        <strong>{{ $errors->first('lastName') }}</strong>
                                     </span>
                             @endif
                         </div>

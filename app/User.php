@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fname', 'lname', 'email', 'password',
+        'firstName', 'lastName', 'email', 'password',
     ];
 
     /**
@@ -27,12 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function setFnameAttribute($value){
-        $this->attributes['fname'] = ucfirst($value);
+    public function setFirstNameAttribute($value){
+        $this->attributes['firstName'] = ucfirst($value);
     }
 
-    public function setLnameAttribute($value){
-        $this->attributes['lname'] = ucfirst($value);
+    public function setLastNameAttribute($value){
+        $this->attributes['lastName'] = ucfirst($value);
     }
 
     public function setPasswordAttribute($value)
@@ -42,6 +43,11 @@ class User extends Authenticatable
 
     public function getFullName()
     {
-        return $this->attributes['fname'] . " " . $this->attributes['fname'];
+        return $this->attributes['firstName'] . " " . $this->attributes['lastName'];
     }
+/*
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }*/
 }

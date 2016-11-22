@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.js"></script>
-
     <!-- Script to Activate the Carousel -->
     <script>
         $('.carousel').carousel({
@@ -13,7 +8,7 @@
         })
     </script>
 
-    <div id="myCarousel" class="carousel slide">
+    <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -24,19 +19,19 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url({!! asset('images/banner1.jpg') !!});"></div>
+                <div class="fill" style="background-image:url('img/banner1.jpg');"></div>
                 <!--<div class="carousel-caption">
                     <h2>Personal Finance</h2>
                 </div>-->
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url({!! asset('images/banner2.jpg') !!});"></div>
+                <div class="fill" style="background-image:url('img/banner2.jpg');"></div>
                 <!--<div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>-->
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url({!! asset('images/banner3.jpg') !!});"></div>
+                <div class="fill" style="background-image:url('img/banner3.jpg');"></div>
                 <!--<div class="carousel-caption">
                     <h2>Caption 3</h2>
                 </div>-->
@@ -50,7 +45,8 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="icon-next"></span>
         </a>
-    </div>
+    </header>
+
 
     <!-- Page Content -->
     <div class="container">
