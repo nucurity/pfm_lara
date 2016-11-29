@@ -23,7 +23,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form role="form" method="POST" action="{{ url('/password/email') }}">
+                <form role="form" method="POST" action="{{ url('/mail/email') }}">
                     {{ csrf_field() }}
 
 

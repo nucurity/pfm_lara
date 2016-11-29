@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('categoryId');
+            $table->string('categoryType');
             $table->string('categoryName');
         });
 

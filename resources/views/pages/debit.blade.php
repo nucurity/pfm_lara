@@ -38,7 +38,7 @@
                 </div>
                 <div class="panel-body">
                     <p>
-                        <form name="creditForm" id="creditForm" style="margin-top:20px" role="form" method="POST"
+                        <form name="debitForm" id="debitForm" style="margin-top:20px" role="form" method="POST"
                               action="{{ url('/addDebit') }}">
                             <!--Mandatory token! Do not touch!-->
                             {{ csrf_field() }}
@@ -47,14 +47,15 @@
                                     <label>
                                         Amount:
                                     </label>
-                                    <input id="debitAmount" type="number" step="any" class="form-control" name="debitAmount"
+                                    <input id="debitAmount" type="number" step="any" class="form-control"
+                                           name="debitAmount"
                                            required autofocus>
                                     @if ($errors->has('debitAmount'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('debitAmount') }}</strong>
                                     </span>
                                     @endif
-                                    <p class="help-block"></p>
+                                     <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('debitName') ? ' has-error' : '' }}">
@@ -65,31 +66,33 @@
                                     <input id="debitName" type="text" class="form-control" name="debitName" required>
                                     @if ($errors->has('debitName'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('debitName') }}</strong>
-                                         </span>
+                                                            <strong>{{ $errors->first('debitName') }}</strong>
+                                                         </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('debitCategory') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('debitCategoryId') ? ' has-error' : '' }}">
                                 <div class="controls">
                                     <label>
                                         Category:
                                     </label>
-                                    <select id="debitCategory" type="text" class="form-control" name="debitCategory" required>
-                                        <option value="1" selected>Uncategorized</option>
-                                        <option value="2">Income</option>
+                                    <select id="debitCategoryId" type="text" class="form-control" name="debitCategoryId" required>
+                                        @foreach ($categories as $cat)
+                                            <option value="{{ $cat->categoryId }}">{{ $cat->categoryName }} </option>;
+                                        @endforeach
                                     </select>
-                                    @if ($errors->has('debitCategory'))
+                                    @if ($errors->has('debitCategoryId'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('debitCategory') }}</strong>
+                                        <strong>{{ $errors->first('debitCategoryId') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
+                            <input type="hidden" value="{!! Auth::user()->id !!}" name="debitUserId">
                             <button type="submit" class="btn btn-primary">
-                                Add credit
+                                Add debit
                             </button>
-                            </form>
+                        </form>
                     </p>
                 </div>
             </div>
